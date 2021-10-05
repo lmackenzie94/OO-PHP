@@ -15,6 +15,7 @@ class Database {
     // old way: $this->connection = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
     $this->connection = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+
     if($this->connection->connect_errno) {
       die("Database connection failed " . $this->connection->connect_error);
     }
@@ -28,6 +29,8 @@ class Database {
   public function query($sql) {
     $result = $this->connection->query($sql);
 
+    $this->confirm_query($result);
+
     return $result;
   }
 
@@ -38,7 +41,7 @@ class Database {
   } 
 
   public function escape_string($string) {
-    return mysqli_real_escape_string($this->connection, $string);
+    return $this->connection->real_escape_string($string);
   }
 }
 
