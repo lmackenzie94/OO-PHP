@@ -9,15 +9,32 @@
       </h1>
 
       <?php 
-      
-       $users = User::find_all_users();
 
-       foreach($users as $user) {
-         echo $user->username . "<br>";
-       }
+      // ADD NEW USER (will add on every page refresh)
+      // $user = new User();
+      // $user->username = "Example_username";
+      // $user->password = "Example_password";
+      // $user->first_name = "Example_first_name";
+      // $user->last_name = "Example_last_name";
 
-       $found_user = User::find_user_by_id(2);
-       echo $found_user->username;
+      // $user->create();
+
+      // UPDATE USER 5
+      // $user = User::find_user_by_id(5);
+      // $user->last_name = "WILLIAMS";
+      // $user->update();
+
+      $user = User::find_user_by_id(5);
+      // print_r($user);
+      $user->delete();
+
+      $users = User::find_all_users();
+      foreach($users as $user) {
+        echo $user->username . "<br>";
+      }
+
+      $found_user = User::find_user_by_id(2);
+      echo $found_user->username;
         
       ?>
       <ol class="breadcrumb">
