@@ -11,30 +11,30 @@
       <?php 
 
       // ADD NEW USER (will add on every page refresh)
-      // $user = new User();
-      // $user->username = "Example_username";
-      // $user->password = "Example_password";
-      // $user->first_name = "Example_first_name";
-      // $user->last_name = "Example_last_name";
+      $user = new User();
+      $user->username = "Example_username_4";
+      $user->password = "Example_password_4";
+      $user->first_name = "Example_first_name_4";
+      $user->last_name = "Example_last_name_4";
 
-      // $user->create();
+      $user->save();
 
-      // UPDATE USER 5
-      // $user = User::find_user_by_id(5);
-      // $user->last_name = "WILLIAMS";
-      // $user->update();
+      // UPDATE USER 4
+      $user = User::find_user_by_id(4);
+      $user->last_name = "BLAHHH";
+      $user->save();
 
-      $user = User::find_user_by_id(5);
+      // $user = User::find_user_by_id(2);
       // print_r($user);
-      $user->delete();
+      // $user->delete();
 
       $users = User::find_all_users();
       foreach($users as $user) {
         echo $user->username . "<br>";
       }
 
-      $found_user = User::find_user_by_id(2);
-      echo $found_user->username;
+      // $found_user = User::find_user_by_id(2);
+      // echo $found_user->username;
         
       ?>
       <ol class="breadcrumb">
