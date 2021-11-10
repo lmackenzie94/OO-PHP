@@ -12,28 +12,35 @@
 
       // ADD NEW USER (will add on every page refresh)
       $user = new User();
-      $user->username = "Example_username_4";
-      $user->password = "Example_password_4";
-      $user->first_name = "Example_first_name_4";
-      $user->last_name = "Example_last_name_4";
+      $user->username = "Example_username_5";
+      $user->password = "Example_password_5";
+      $user->first_name = "Example_first_name_5";
+      $user->last_name = "Example_last_name_5";
 
-      $user->save();
+      // $user->save();
 
       // UPDATE USER 4
-      $user = User::find_user_by_id(4);
+      $user = User::find_by_id(4);
       $user->last_name = "BLAHHH";
       $user->save();
 
-      // $user = User::find_user_by_id(2);
+      // $user = User::find_by_id(2);
       // print_r($user);
       // $user->delete();
 
-      $users = User::find_all_users();
+      $users = User::find_all();
       foreach($users as $user) {
         echo $user->username . "<br>";
       }
 
-      // $found_user = User::find_user_by_id(2);
+      echo INCLUDES_PATH;
+
+      $photos = Photo::find_all();
+      foreach($photos as $photo) {
+        echo $photo->title . "<br>";
+      }
+
+      // $found_user = User::find_by_id(2);
       // echo $found_user->username;
         
       ?>
