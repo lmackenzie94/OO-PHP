@@ -6,8 +6,8 @@ class Db_object {
     return static::find_by_query("SELECT * FROM " . static::$db_table . " ");
   }
  
-  public static function find_by_id($user_id) {
-    $the_result_array = static::find_by_query("SELECT * FROM " . static::$db_table . " WHERE id = $user_id LIMIT 1");
+  public static function find_by_id($id) {
+    $the_result_array = static::find_by_query("SELECT * FROM " . static::$db_table . " WHERE id = $id LIMIT 1");
 
     // return first item in non-empty array OR false
     return !empty($the_result_array) ? array_shift($the_result_array) : false;
@@ -65,6 +65,7 @@ class Db_object {
     $clean_properties = array();
 
     foreach ($this->properties() as $key => $value) {
+      echo $key . $value . '<br>';
       $clean_properties[$key] = $database->escape_string($value);
     }
 
@@ -80,12 +81,14 @@ class Db_object {
     $properties = $this->clean_properties();
 
     // .= is for concatenation 
-    $sql = "INSERT INTO " . static::$db_table . " (" . implode(",", array_keys($properties)) . ")"; 
-    $sql .= "VALUES ('". implode("','", array_values($properties)) ."')";
+    $sql = "INSERT INTO " .static::$db_table. "(". implode(",", array_keys($properties)) . ")";
+	  $sql .= "VALUES ('" . implode("','", array_values($properties)) . "')";
+
+    // echo $sql;
 
     if ($database->query($sql)) {
       $this->id = $database->the_insert_id(); // gets the automatically generated "id"
-      print_r($database->the_insert_id());
+      // print_r($database->the_insert_id());
       return true;
     } else {
       return false;
