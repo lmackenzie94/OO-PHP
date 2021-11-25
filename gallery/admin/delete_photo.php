@@ -11,7 +11,7 @@ if(!$session->is_signed_in()) {
 
   if (empty($_GET['id'])) {
     // redirect('photos.php'); // doesn't work
-    redirect('../photos.php'); // doesn't work
+    redirect('../photos.php');
 
   }
 

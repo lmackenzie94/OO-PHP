@@ -1,5 +1,14 @@
 <?php include("includes/header.php"); ?>
 
+<?php   if(!$session->is_signed_in())
+{
+    redirect("login.php");
+}?>
+
+<?php
+    $users = User::find_all();
+?>
+
 <!-- Navigation -->
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <?php include('includes/top_nav.php') ?>
@@ -17,16 +26,49 @@
       <div class="col-lg-12">
         <h1 class="page-header">
           Users
-          <small>Subheading</small>
         </h1>
-        <ol class="breadcrumb">
-          <li>
-            <i class="fa fa-dashboard"></i> <a href="index.html">Dashboard</a>
-          </li>
-          <li class="active">
-            <i class="fa fa-file"></i> Blank Page
-          </li>
-        </ol>
+        <a href="add_user.php" class="btn btn-primary">Add User</a>
+        <div class="col-md-12">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Photo</th>
+                <th>Username</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <!-- <th>Comments</th> -->
+              </tr>
+            </thead>
+            <tbody>
+
+              <?php
+              foreach ($users as $user): 
+                  // $user_comments = Comment::find_the_comments($user->id);
+                  // $number_of_comments = count($user_comments);
+              ?>
+
+              <tr>
+                <td><?php echo $user->id;  ?></td>
+                <td><img class="admin-user-thumbnail user_image" src="<?php echo $user->image_path_and_placeholder(); ?>" alt=""></td>
+                <td><?php echo $user->username;  ?>
+                  <div class="action_links">
+                    <!-- sends a GET request and passes the user ID as a param -->
+                    <a href="delete_user.php?id=<?php echo $user->id ?>">Delete</a>
+                    <a href="edit_user.php?id=<?php echo $user->id ?>">Edit</a>
+                    <a href="">View</a>
+                  </div>
+                </td>
+                <td><?php echo $user->first_name; ?> </td>
+                <td><?php echo $user->last_name; ?> </td>
+                <!-- <td><a href='comment_user.php?id=<?php echo $user->id; ?>'><?php echo $number_of_comments; ?></a> </td> -->
+              </tr>
+
+              <?php endforeach ?>
+
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
     <!-- /.row -->
