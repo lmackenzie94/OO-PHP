@@ -15,41 +15,8 @@ class User extends Db_object {
 
   public $tmp_path;
   public $upload_directory = "images";
-  public $errors = array();
-  public $upload_errors_array = array(
-    0=>"There is no error, the file uploaded with success",
-    1=>"The uploaded file exceeds the upload_max_filesize directive in php.ini",
-    2=>"The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form",
-    3=>"The uploaded file was only partially uploaded",
-    4=>"No file was uploaded",
-    6=>"Missing a temporary folder"
-  );
 
-  public function set_file($file) {
-
-    if(empty($file) || !$file || !is_array($file)) {
-
-      $this->errors[] = "There was no uploaded file here!";
-      return false;
-
-    } elseif ($file['error'] != 0) {
-
-      $this->errors[] = $this->upload_errors_array[$file['error']];
-      return false;
-
-    } else {
-
-      $this->user_image = basename($file['name']);
-      $this->tmp_path = $file['tmp_name'];
-      $this->type = $file['type'];
-      $this->size = $file['size'];
-    }
-  }
-
-  public function save_user_and_image() {
-    if($this->id) {
-      $this->update();
-    } else {
+  public function upload_photo() {
 
       if (!empty($this->errors)) {
         return false;
@@ -68,12 +35,8 @@ class User extends Db_object {
 			}
 
 			if(move_uploaded_file($this->tmp_path, $target_path)) {
-
-				if($this->create()) {
-
-					unset($this->tmp_path);
-					return true;
-				}
+        unset($this->tmp_path);
+        return true;	
 
 			} else {
 
@@ -82,7 +45,6 @@ class User extends Db_object {
 			}
 
       $this->create();
-    }
   }
 
   public function image_path_and_placeholder() {
