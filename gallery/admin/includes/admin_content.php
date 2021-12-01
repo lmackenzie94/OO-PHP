@@ -20,9 +20,9 @@
       // $user->save();
 
       // UPDATE USER 4
-      $user = User::find_by_id(4);
-      $user->last_name = "BLAHHH";
-      $user->save();
+      // $user = User::find_by_id(4);
+      // $user->last_name = "BLAHHH";
+      // $user->save();
 
       // $user = User::find_by_id(2);
       // print_r($user);
