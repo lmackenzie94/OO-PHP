@@ -34,6 +34,7 @@
   <!-- include summernote css/js -->
   <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+
 </head>
 
 <body>

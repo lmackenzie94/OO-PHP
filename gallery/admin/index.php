@@ -7,6 +7,9 @@ if(!$session->is_signed_in()) {
 }
 ?>
 
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+
 <!-- Navigation -->
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <?php include('includes/top_nav.php') ?>
@@ -19,7 +22,7 @@ if(!$session->is_signed_in()) {
 
   <?php include('includes/admin_content.php') ?>
 
-</div>r
+</div>
 <!-- /#page-wrapper -->
 
 <?php include("includes/footer.php"); ?>
