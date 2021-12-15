@@ -37,6 +37,8 @@
   }
 ?>
 
+<?php include('includes/photo_modal.php') ?>
+
 <!-- Navigation -->
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <?php include('includes/top_nav.php') ?>
@@ -57,7 +59,9 @@
         </h1>
 
         <div class="col-md-6">
-          <img class="img-responsive" src="<?php echo $user->image_path_and_placeholder() ?>" alt="" />
+          <a href="" data-toggle="modal" data-target="#photo-modal">
+            <img class="img-responsive" src="<?php echo $user->image_path_and_placeholder() ?>" alt="" />
+          </a>
         </div>
 
         <!-- empty action will submit to this page -->
@@ -89,7 +93,7 @@
               <input id="password" type="password" name="password" class="form-control">
             </div>
             <div class="form-group">
-              <a class="btn btn-danger" href="delete_user.php?id=<?php echo $user->id ?>">Delete</a>
+              <a id="user-id" class="btn btn-danger" href="delete_user.php?id=<?php echo $user->id ?>">Delete</a>
               <input type="submit" name="update" class="btn btn-primary pull-right" value="Update">
             </div>
           </div>
