@@ -6,6 +6,6 @@
 | Nov 25 | 30 mins |
 | Nov 29 | 1 hour  |
 | Nov 30 | 30 mins |
-| Dec 15 | 20 mins |
+| Dec 15 | 30 mins |
 
-**TOTAL:** 2 hours
+**TOTAL:** 3 hours

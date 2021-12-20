@@ -68,3 +68,16 @@
 #modal_sidebar {
     position: fixed !important;
 }
+
+.dropzone {
+    border: 6px dashed #0087f7;
+    border-radius: 5px;
+    background: white;
+    padding: 10px;
+    min-height: 200px;
+    margin-top: 10px;
+}
+
+#login-id label {
+    color: white;
+}

@@ -24,6 +24,8 @@
     <!-- Page Heading -->
     <div class="row">
       <div class="col-lg-12">
+        <!-- $message is set in edit_user.php and instantiated in session.php -->
+        <p class="bg-success"><?php echo $message; ?></p>
         <h1 class="page-header">
           Users
         </h1>
@@ -54,7 +56,7 @@
                 <td><?php echo $user->username;  ?>
                   <div class="action_links">
                     <!-- sends a GET request and passes the user ID as a param -->
-                    <a href="delete_user.php?id=<?php echo $user->id ?>">Delete</a>
+                    <a class="delete_link" href="delete_user.php?id=<?php echo $user->id ?>">Delete</a>
                     <a href="edit_user.php?id=<?php echo $user->id ?>">Edit</a>
                   </div>
                 </td>

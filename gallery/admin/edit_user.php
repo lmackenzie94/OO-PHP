@@ -27,11 +27,17 @@
 
       if (empty($_FILES['user_image'])) {
         $user->save();
+        redirect("users.php");
+        $session->message("The user has been updated");
+
+
       } else {
         $user->set_file($_FILES['user_image']);
         $user->upload_photo();
         $user->save();
-        redirect("edit_user.php?id={$user->id}");
+        $session->message("The user has been updated");
+        // redirect("edit_user.php?id={$user->id}");
+        redirect("users.php");
       }
     }
   }
@@ -55,7 +61,7 @@
     <div class="row">
       <div class="col-lg-12">
         <h1 class="page-header">
-          Add User
+          Edit User
         </h1>
 
         <div class="col-md-6 user_image_box">

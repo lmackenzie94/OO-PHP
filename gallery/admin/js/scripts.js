@@ -2,6 +2,15 @@ $(document).ready(function () {
     let user_id;
     let image_name;
     let photo_id;
+
+    // edit photo sidebar (dropdown)
+    $('.info-box-header').click(function () {
+        $('.inside').slideToggle('fast');
+        $('#toggle').toggleClass(
+            'glyphicon-menu-down glyphicon, glyphicon-menu-up glyphicon'
+        );
+    });
+
     $('.modal_thumbnails').click(function () {
         $('#set_user_image').prop('disabled', false);
 
@@ -45,5 +54,11 @@ $(document).ready(function () {
     // text editor for the admin
     $('#summernote').summernote({
         height: 150
+    });
+
+    // delete function
+
+    $('.delete_link').click(function () {
+        return confirm('Are you sure uou want to delete this item?');
     });
 });

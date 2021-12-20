@@ -17,6 +17,7 @@ if(!$session->is_signed_in()) {
 
   if ($comment) {
     $comment->delete();
+    $session->message("The comment with id {$comment->id} has been deleted.");
   }
   redirect("comment_photo.php?id={$comment->photo_id}");
 

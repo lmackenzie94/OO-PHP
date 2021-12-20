@@ -10,8 +10,7 @@ if(!$session->is_signed_in()) {
 <?php 
 
   if (empty($_GET['id'])) {
-    // redirect('photos.php'); // doesn't work
-    redirect('../photos.php');
+    redirect('photos.php');
 
   }
 
@@ -19,7 +18,8 @@ if(!$session->is_signed_in()) {
 
   if ($photo) {
     $photo->delete_photo();
+    $session->message("The photo {$photo->filename} has been deleted.");
   }
-  redirect('../photos.php');
+  redirect('photos.php');
 
 ?>
